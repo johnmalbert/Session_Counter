@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+    <main>
+        <section class="jumbotron text-center">
+            <div class="container" style="border: 2px solid black; padding: 20px;">
+                <h1 class="jumbotron-heading">SESSION COUNTER</h1>
+               
+                <a href="/"><button type = "button" class="btn btn-primary">Refresh Page</button></a>
+                <a href="/2"><button type = "button" class="btn btn-primary">Increase by 2!</button></a>
+                <a href="/destroy_session"><button type = "button" class="btn btn-primary">End Session</button></a>
+                <form action="/amount" style="padding: 20px;" method="post">
+                    {% csrf_token %} 
+                    <label for="increase"><h3>Increase by Desired Amount</h3></label>
+                    <input type="number" style="width: 90px; margin: auto;" class="form-control" name="amount" placeholder="" value="0">
+                    <button class="btn btn-primary btn-lg btn-block" style="width: 90px; margin: auto; margin-top: 10px;" type="submit">Enter</button>
+                </form>
+                <h2>Page Refresh Count: {{request.session.counter}}</h2>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
